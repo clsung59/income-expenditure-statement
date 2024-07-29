@@ -1,0 +1,48 @@
+# How to run
+> java -jar ./income-expenditure-statement-0.0.1-SNAPSHOT.jar
+
+Or to build and run the project yourself: (additionally requires maven installed)
+> ./mvnw spring-boot:run
+
+# To test the application
+* URL: http://localhost:8080/
+* Username: user
+* Password: p@ssw0rd!
+
+On the home page you can either "Submit Statement" or "View Past Statement"
+
+You can submit multiple statements but "View Past Statement" always shows the first statement you submitted
+(with URL path "/statement?id=1"). I did not implement the feature for selecting a specific statement. But you can
+change the id in the URL path to see any other statement (as long as the id exists).
+
+And sorry, you can't log out and log back in (not implemented...)
+
+# Notes
+Project is implemented using Spring Boot, so the setup is very Spring Boot specific.
+
+The following files can be found under src/main/java/com/ophelos/incomeexpenditure/
+* db/* - database entities and repositories
+* web/controllers/IncomeExpenditureController - this is the controller to process incoming requests from the HTTP client.
+* services/IncomeExpenditureService - this is the service class for handling statement, income and expenditure data,
+  separating the controller from the database layer.
+* web/config/* - custom Spring Boot configuration files.
+* IncomeExpenditureApplication - contains the main method.
+
+Test files are under src/test/java.
+
+Project uses an in-memory database (H2)
+* Tables are re-created and any initial data required (such as a user login) are setup at startup. This means
+  any data you have previously entered will be lost if application is restarted.
+* You can open "src/main/resources/schema.sql" and "src/main/resources/data.sql" to see how the database is
+  initially setup.
+
+# Other possible improvements:
+* I used Integer as the income/expenditure amount, which is not ideal, but I think it serves the purpose here.
+  If this were a production exercise I would use something more appropriate such as BigDecimal, and use locale and
+  currency formatting. Java BigDecimal values cannot be used with native operators (+/-/etc) so it would have made the
+  code a little more verbose.
+* Improve the UI to be more interactive and user-friendly.
+* More unit test coverage.
+
+
+
