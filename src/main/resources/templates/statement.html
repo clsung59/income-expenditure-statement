@@ -29,10 +29,10 @@
             <td colspan="4"> No income or expenditure for this statement </td>
         </tr>
         <tr th:each="row : ${statement.rows}">
-            <td><span th:text="${row.incomeCategory}"></span></td>
-            <td><span th:text="${row.incomeAmount}"></span></td>
-            <td><span th:text="${row.expenditureCategory}"></span></td>
-            <td><span th:text="${row.expenditureAmount}"></span></td>
+            <td class="table-primary"><span th:text="${row.incomeCategory}"></span></td>
+            <td class="table-primary"><span th:text="${row.incomeAmount}"></span></td>
+            <td class="table-danger"><span th:text="${row.expenditureCategory}"></span></td>
+            <td class="table-danger"><span th:text="${row.expenditureAmount}"></span></td>
         </tr>
         </tbody>
     </table>

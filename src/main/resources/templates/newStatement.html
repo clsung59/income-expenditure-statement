@@ -54,16 +54,16 @@
                 <td colspan="4"> No Statement Available</td>
             </tr>
             <tr th:each="row, itemStat : ${statement.rows}">
-                <td>
+                <td class="table-primary">
                     <input th:name="|rows[${itemStat.index}].incomeCategory|" th:value="${row.incomeCategory}"/>
                 </td>
-                <td>
+                <td class="table-primary">
                     <input th:name="|rows[${itemStat.index}].incomeAmount|" th:value="${row.incomeAmount}"/>
                 </td>
-                <td>
+                <td class="table-danger">
                     <input th:name="|rows[${itemStat.index}].expenditureCategory|" th:value="${row.expenditureCategory}"/>
                 </td>
-                <td>
+                <td class="table-danger">
                     <input th:name="|rows[${itemStat.index}].expenditureAmount|" th:value="${row.expenditureAmount}"/>
                 </td>
             </tr>
